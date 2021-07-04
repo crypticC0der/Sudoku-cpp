@@ -173,7 +173,7 @@ bool genPos(int* gridL,int** gridPos,int*gridposlen,bool*changed,int* complen){
 			if(poslen==1){
 				gridL[i*gridLen +j]=gridPos[i*gridLen +j][0];
 				gridposlen[i*gridLen+j]=0;
-				free(gridPos[i*gridLen +j]);
+				//free(gridPos[i*gridLen +j]);
 				*changed=true;
 			}
 			if(gridL[i*gridLen +j]!=0){(*complen)++;}
