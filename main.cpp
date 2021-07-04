@@ -191,7 +191,6 @@ bool solve(int* gridL){
 	int* complen = new int[1];
 	*changed=true;
 
-	cout << "1" << endl;
 	//generate posibilites
 	//cout<<"generating posses"<<endl;
 	while(*changed!=0){
@@ -207,7 +206,6 @@ bool solve(int* gridL){
 		if((*complen)==gridSize){grid=gridL;return true;}
 	}
 
-	cout << "2" << endl;
 	//guess until right lmao
 	bool failing=false;
 	int n_indx=0;
@@ -225,7 +223,6 @@ bool solve(int* gridL){
 		int n=gridPos[mini][n_indx];
 		cout << "testing for n="<<n<<" at position "<< mini/gridLen<< " , " <<mini%gridLen<<" with "<<1/(float)(minlen)<<" posibility"<<endl;
 		newGrid[mini]=n;
-		cout<<"a"<<endl;
 		if(solve(newGrid)){
 			//win
 			return true;
@@ -246,7 +243,7 @@ int main(int argc, char** argv) {
 	//while(!generateGrid()){}
 	int* cgrid=new int[gridSize];
 	if(!solve(cgrid)){
-		cout<<"help"<<endl;
+		cout<<"i failed"<<endl;
 	}
 	glutInit(&argc, argv);		// Initialize GLUT
     glutInitWindowSize(600,600);   // Set the window's initial width & height
