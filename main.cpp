@@ -29,7 +29,7 @@ void nextGenerationSquare(int x1, int y1,float* rgb)
 }
 */
 
-const int gridUnit = 3;
+const int gridUnit = 4;
 int gridLen;
 int gridSize;
 int* grid;
@@ -113,12 +113,12 @@ void run(){
 
 bool numberAlreadyThere(int x,int y,int n,int* gridL){
 	bool good=true;
-	int bx=x-x%3;
-	int by=y-y%3;
+	int bx=x-x%gridUnit;
+	int by=y-y%gridUnit;
 	for(int i=0;i<gridUnit;i++){
 		for(int j=0;j<gridUnit;j++){
-			good&=n!=gridL[y*gridLen+(i*3 +j)];
-			good&=n!=gridL[(i*3+j)*gridLen+x];
+			good&=n!=gridL[y*gridLen+(i*gridUnit +j)];
+			good&=n!=gridL[(i*gridUnit+j)*gridLen+x];
 			good&=n!=gridL[(by+i)*gridLen + (bx+j)];
 		}
 	}
