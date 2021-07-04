@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <GL/glut.h>
 #include <GL/freeglut.h>
 #include <time.h> 
@@ -29,7 +30,7 @@ void nextGenerationSquare(int x1, int y1,float* rgb)
 }
 */
 
-const int gridUnit = 4;
+const int gridUnit = 3;
 int gridLen;
 int gridSize;
 int* grid;
@@ -242,6 +243,23 @@ int main(int argc, char** argv) {
 	gridSize=gridLen*gridLen;
 	//while(!generateGrid()){}
 	int* cgrid=new int[gridSize];
+	
+	//read grid from file
+	ifstream gFile;
+	gFile.open("grid.txt",ios::in);
+	char c;
+	int k=0;
+	while(!gFile.eof()){
+		gFile.get(c);
+		if(c==32){c=48;}
+		if(c!=10){
+			int a = k%gridLen;
+			int b= k/gridLen;
+			cgrid[(a*gridLen) + (gridLen-(b+1))]=c-48;
+			k+=1;
+		}
+	}
+
 	if(!solve(cgrid)){
 		cout<<"i failed"<<endl;
 	}
